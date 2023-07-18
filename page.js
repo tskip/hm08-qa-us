@@ -18,19 +18,21 @@ module.exports = {
     closePaymentMethodModalButton: '.payment-picker .close-button',
     supportCarButton: 'div=Supportive',
     nextPhoneNumberButton: 'button=button full',
-    orderRequirements: 'div=Order requirements',
+    orderRequirements: '.reqs-header',
     iceCreamBucket: 'div=Ice cream bucket',
     plusButton: '.r-counter .counter .counter-plus',
-    counterValue: 'div=counter-value',
+    counterValue: '.r-counter .counter-value',
     blanketHankerchiefSwitch: '.r-sw',
-    orderButton: '.smart-button',
+    orderButton: '.smart-button-wrapper .smart-button',
     // Modals
     phoneNumberModal: '.modal',
+    carSearchModal: '.order-body',
     //Misc
     cardSignatureStrip: '.plc',
     cardPaymentMethodIcon: 'img[alt="card"]',
     // Functions
     fillAddresses: async function(from, to) {
+        
         const fromField = await $(this.fromField);
         await fromField.setValue(from);
         const toField = await $(this.toField);
@@ -38,8 +40,10 @@ module.exports = {
         const callATaxiButton = await $(this.callATaxiButton);
         await callATaxiButton.waitForDisplayed();
         await callATaxiButton.click();
+
     },
     fillPhoneNumber: async function(phoneNumber) {
+
         const phoneNumberButton = await $(this.phoneNumberButton);
         await phoneNumberButton.waitForDisplayed();
         await phoneNumberButton.click();
@@ -48,8 +52,10 @@ module.exports = {
         const phoneNumberField = await $(this.phoneNumberField);
         await phoneNumberField.waitForDisplayed();
         await phoneNumberField.setValue(phoneNumber);
+
     },
     submitPhoneNumber: async function(phoneNumber) {
+
         await this.fillPhoneNumber(phoneNumber);
         // we are starting interception of request from the moment of method call
         await browser.setupInterceptor();
@@ -64,9 +70,11 @@ module.exports = {
         await expect(requests.length).toBe(1)
         const code = await requests[0].response.body.code
         await codeField.setValue(code)
-        await $(this.confirmButton).click()
+        await $(this.confirmButton).click();
+
     },
     addPaymentMethodCard: async function(){
+
         //Click on the payment method button
         const paymentMethodButton = await $(this.paymentMethodButton);
         await paymentMethodButton.waitForDisplayed();
@@ -110,38 +118,30 @@ module.exports = {
         const closePaymentMethodModalButton = await $(this.closePaymentMethodModalButton);
         await closePaymentMethodModalButton.waitForDisplayed();
         await closePaymentMethodModalButton.click();
+
     },
     selectSupportiveClass: async function() {
+
         const supportCarButton = await $(this.supportCarButton);
         await supportCarButton.waitForDisplayed();
         await supportCarButton.click();
-    },
-    addMessageToDriver: async function() {
-        const driverMessageInput = await $(this.driverMessageInput);
-        await driverMessageInput.setValue('Get some whiskey');
-        const message = await driverMessageInput.getValue();
-        await expect(message).toBe('Get some whiskey');
+
     },
     orderBlanketAndHankerchief: async function() {
+
         const blanketHankerchiefSwitch = await ($(this.blanketHankerchiefSwitch));
         await blanketHankerchiefSwitch.waitForDisplayed();
         await blanketHankerchiefSwitch.click();
+
+        //expect check for swithc to be enabled
         await expect(blanketHankerchiefSwitch).toBeEnabled();
+
     },
-    orderIceCream: async function() {
-        
-        //pause is needed for system to catch up
-        await browser.pause(1000);
-
-        const iceCreamBucket = await $(this.iceCreamBucket);
-        await iceCreamBucket.waitForDisplayed();
-        await iceCreamBucket.click();
-
-        //pause is needed for system to catch up
-        await browser.pause(1000);
-
+    order2IceCream: async function() {
+     
         const addIceCream = await $(this.plusButton);
         await addIceCream.waitForDisplayed()
         await addIceCream.doubleClick();
+    
     }
 };

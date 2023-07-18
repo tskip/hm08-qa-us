@@ -17,18 +17,18 @@ exports.config = {
             args: ['headless', 'disable-gpu']
         }
     },
-    /* {
-        maxInstances: 5,
-        browserName: 'firefox',
-        acceptInsecureCerts: true,
-        'moz:firefoxOptions': {
-            args: ['-headless']
-        }
-    } */
+    // {
+    //     maxInstances: 5,
+    //     browserName: 'firefox',
+    //     acceptInsecureCerts: true,
+    //     'moz:firefoxOptions': {
+    //         args: ['-headless']
+    //     }
+    // }
 ],
     logLevel: 'error',
     bail: 0,
-    baseUrl: 'https://2f3121e7-4e24-44d5-bdc8-f35e5a08f3fe.serverhub.tripleten-services.com',
+    baseUrl: 'https://ea2cd828-6024-4607-bd4f-59d90f4f5588.serverhub.tripleten-services.com',
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
