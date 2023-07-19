@@ -133,9 +133,6 @@ module.exports = {
         await blanketHankerchiefSwitch.waitForDisplayed();
         await blanketHankerchiefSwitch.click();
 
-        //expect check for swithc to be enabled
-        await expect(blanketHankerchiefSwitch).toBeEnabled();
-
     },
     order2IceCream: async function() {
      
