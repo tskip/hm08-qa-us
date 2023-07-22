@@ -3,7 +3,7 @@ const helper = require('../../helper');
 
 describe('Create an order', () => {
 
-    it.skip ('Should set the address', async () => {
+    it ('Should set the address', async () => {
         //Step 1 - Setting the address
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
@@ -19,7 +19,7 @@ describe('Create an order', () => {
         await expect(toField).toHaveValueContaining('1300 1st St');
     })
 
-    it.skip ('Should select the Supportive class', async () => {
+    it ('Should select the Supportive class', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
 
@@ -29,7 +29,7 @@ describe('Create an order', () => {
         await expect(supportClass).toBeEnabled();
     })
 
-    it.skip ('Should fill in the phone number', async () => {
+    it ('Should fill in the phone number', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
 
@@ -41,7 +41,7 @@ describe('Create an order', () => {
         await expect(phone).toHaveValueContaining(phoneNumber);
     })
 
-    it.skip ('Should add a credit card', async () => {
+    it ('Should add a credit card', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
 
@@ -53,7 +53,7 @@ describe('Create an order', () => {
         await expect(await $(cardPaymentMethodIcon)).toBeExisting();
     })
 
-    it.skip ('Should write a message to the driver', async () => {
+    it ('Should write a message to the driver', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
 
@@ -66,7 +66,7 @@ describe('Create an order', () => {
         await expect(message).toBe('Get some whiskey');        
     })
 
-    it.skip ('Should order a Blanket and Handercheifs ', async () => {
+    it ('Should order a Blanket and Handercheifs ', async () => {
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
 
@@ -106,7 +106,7 @@ describe('Create an order', () => {
         await expect(iceCreamCount).toHaveText('2');
     })
 
-    it.skip ('Should display Car Search Modal', async () => {
+    it ('Should display Car Search Modal', async () => {
 
         await browser.url(`/`)
         await page.fillAddresses('East 2nd Street, 601', '1300 1st St');
