@@ -21,7 +21,7 @@ module.exports = {
     orderRequirements: '.reqs-header',
     iceCreamBucket: 'div=Ice cream bucket',
     plusButton: '.r-counter .counter .counter-plus',
-    counterValue: '.r-counter .counter-value',
+    counterValue: '.r-counter .counter .counter-value',
     blanketHankerchiefSwitch: '.r-sw',
     orderButton: '.smart-button-wrapper .smart-button',
     // Modals
